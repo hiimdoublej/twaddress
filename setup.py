@@ -4,15 +4,22 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-        name="twaddress",
-        version="0.0.1",
-        author="mlouie",
-        author_email="git@louie.lu",
-        description="A package to translate Chinese address to English, using Taiwanese postal office format.",
-        long_description=long_description,
-        long_description_content_type="text/markdown",
-        url="https://github.com/mlouielu/twaddress",
-        packages=setuptools.find_namespace_packages(),
+    name="twaddress",
+    version="0.0.1",
+    author="mlouie",
+    author_email="git@louie.lu",
+    description="A package to translate Chinese address to English, using Taiwanese postal office format.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/mlouielu/twaddress",
+    packages=setuptools.find_namespace_packages(),
+    package_data={
+        'location_data': [
+            'twaddress/data/dataset/county10706.csv',
+            'twaddress/data/dataset/road10702.csv',
+            'twaddress/data/dataset/village10602.csv',
+        ]
+    },
     classifiers=[
                 "Programming Language :: Python :: 3",
                 "License :: OSI Approved :: MIT License",

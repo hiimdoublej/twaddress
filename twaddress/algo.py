@@ -87,11 +87,26 @@ def refine_sections(s):
     return s
 
 
+def remove_neighborhood(s):
+    pattern = '([\d一二三四五六七八九]+鄰)'
+    match = re.findall(pattern, s)
+    left = re.sub(pattern, '', s)
+    return left
+
+
+def remove_parentheses(s):
+    pattern = '\(.*\)|\（.*\）'
+    match = re.findall(pattern, s)
+    left = re.sub(pattern, '', s)
+    return left
+
+
 def mms_cut(s):
     # Maximum match segment cut
     # Assumpt input is a correct address
+    s = remove_parentheses(s)
     s = refine_sections(s)
-
+    s = remove_neighborhood(s)
     city, s = _maximum_match_segment(s, 7, data.county)
     if not city:
         city, s = _maximum_match_segment(s, 7, data.city)
@@ -99,8 +114,8 @@ def mms_cut(s):
     if isinstance(city, data.County):
         code = city.code
         city = city.eng
-    road, s = _maximum_match_segment(s, 14, data.road)
     village, s = _maximum_match_segment(s, 7, data.village)
+    road, s = _maximum_match_segment(s, 14, data.road)
     address = parse(s)
 
     return code, city, road, village, address

@@ -37,3 +37,33 @@ class GetTest(unittest.TestCase):
         get_result_2 = twaddress.get("台北市內湖區內湖路一段306號")
         self.assertEqual(get_result_1, expect)
         self.assertEqual(get_result_2, expect)
+
+    def test_village_addresses(self):
+        str_1 = "桃園市桃園區建國里桃鶯路85號1樓"
+        str_2 = "台南市鹽水區義稠里義稠65之1號1樓"
+        get_result_1 = twaddress.get(str_1)
+        get_result_2 = twaddress.get(str_2)
+        self.assertEqual(
+            get_result_1,
+            "1F, No.85, Taoying Rd., Jianguo Vil., Taoyuan Dist., Taoyuan City 330, Taiwan (R.O.C.)",
+            msg=f"Original string={str_1}")
+        self.assertEqual(
+            get_result_2,
+            "65-1F, No.1, Yichou, Yichou Vil., Yanshui Dist., Tainan City 737, Taiwan (R.O.C.)",
+            msg=f"Origianl string={str_2}")
+
+    def test_discard_neighborhood(self):
+        str_1 = "桃園市中壢區興南里一鄰中美路一段51號2樓"
+        get_result_1 = twaddress.get(str_1)
+        self.assertEqual(
+            get_result_1,
+            "2F, No.51, Sec. 1, Zhongmei Rd., Xingnan Vil., Zhongli Dist., Taoyuan City 320, Taiwan (R.O.C.)",
+            msg=f"Original string={str_1}")
+
+    def test_parenthesis(self):
+        str_1 = "新北市板橋區成功路6巷7號2樓(現場僅供辦公室使用)"
+        get_result_1 = twaddress.get(str_1)
+        self.assertEqual(
+            get_result_1,
+            "2F, No.7, Ln. 6, Chenggong Rd., Banqiao Dist., New Taipei City 220, Taiwan (R.O.C.)",
+            msg=f"Original string={str_1}")

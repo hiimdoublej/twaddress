@@ -12,7 +12,7 @@ def _to_eng(cut_result, for_post=False):
     code, city, road, village, address = cut_result
 
     if for_post:
-        result = [road, village + '\n' , '%s %s' % (city, code), '\nTaiwan (R.O.C.)']
+        result = [road, village, '\n%s %s' % (city, code), '\nTaiwan (R.O.C.)']
     else:
         result = [road, village, '%s %s' % (city, code), 'Taiwan (R.O.C.)']
     if address['巷']:

@@ -8,10 +8,13 @@ from slugify import slugify
 import re
 
 
-def _to_eng(cut_result):
+def _to_eng(cut_result, for_post=False):
     code, city, road, village, address = cut_result
 
-    result = [road, village, '%s %s' % (city, code), 'Taiwan (R.O.C.)']
+    if for_post:
+        result = [road, village + '\n' , '%s %s' % (city, code), '\nTaiwan (R.O.C.)']
+    else:
+        result = [road, village, '%s %s' % (city, code), 'Taiwan (R.O.C.)']
     if address['巷']:
         result.insert(0, 'Ln. ' + address['巷'])
     if address['弄']:
@@ -33,8 +36,8 @@ def _to_eng(cut_result):
     
 
 
-def get(address):
-    return _to_eng(cut(address))
+def get(address, for_post=False):
+    return _to_eng(cut(address), for_post=for_post)
 
 
 def cut(address):

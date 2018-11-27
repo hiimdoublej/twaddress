@@ -27,7 +27,6 @@ def _to_eng(cut_result):
     # replace remaining chinese chars
     pattern = '[\u4E00-\u9FA5]+'
     match = re.findall(pattern, result_str)
-    print(f"match={match}")
     for m in match:
         result_str = result_str.replace(m, slugify(m,separator=' ', lowercase=False))
     return result_str

@@ -11,3 +11,7 @@ Usage
 >>> twaddress.get('高雄市前鎮區成功二路25號5樓之1')
 '5F-1, No. 25, Chenggong 2nd Rd., Qianzhen Dist., Kaohsiung City 806, Taiwan (R.O.C.)'
 ```
+
+Notes
+-----
+為了方便使用,地址中不會有傳統文字'臺',請先自行轉換。

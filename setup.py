@@ -12,14 +12,8 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mlouielu/twaddress",
-    packages=setuptools.find_namespace_packages(),
-    package_data={
-        'location_data': [
-            'twaddress/data/dataset/county10706.csv',
-            'twaddress/data/dataset/road10702.csv',
-            'twaddress/data/dataset/village10602.csv',
-        ]
-    },
+    packages=setuptools.find_packages(exclude=('test',)),
+    include_package_data=True,
     classifiers=[
                 "Programming Language :: Python :: 3",
                 "License :: OSI Approved :: MIT License",

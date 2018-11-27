@@ -28,7 +28,7 @@ def _to_eng(cut_result):
     pattern = '[\u4E00-\u9FA5]+'
     match = re.findall(pattern, result_str)
     for m in match:
-        result_str = result_str.replace(m, slugify(m,separator=' ', lowercase=False))
+        result_str = result_str.replace(m, slugify(m,separator=' ', lowercase=False) + ' ')
     return result_str
     
 

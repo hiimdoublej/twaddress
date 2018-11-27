@@ -4,6 +4,8 @@ name = "twaddress"
 
 
 from twaddress import algo
+from slugify import slugify
+import re
 
 
 def _to_eng(cut_result):
@@ -21,7 +23,15 @@ def _to_eng(cut_result):
     if address['室']:
         result.insert(0, address['室'])
 
-    return ', '.join(filter(lambda x: x, result))
+    result_str = ', '.join(filter(lambda x: x, result))
+    # replace remaining chinese chars
+    pattern = '[\u4E00-\u9FA5]+'
+    match = re.findall(pattern, result_str)
+    print(f"match={match}")
+    for m in match:
+        result_str = result_str.replace(m, slugify(m,separator=' ', lowercase=False))
+    return result_str
+    
 
 
 def get(address):

@@ -14,6 +14,7 @@ setuptools.setup(
     url="https://github.com/mlouielu/twaddress",
     packages=setuptools.find_packages(exclude=('test',)),
     include_package_data=True,
+    install_requires = ['python-slugify>=1.2.0'],
     classifiers=[
                 "Programming Language :: Python :: 3",
                 "License :: OSI Approved :: MIT License",

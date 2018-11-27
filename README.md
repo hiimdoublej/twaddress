@@ -15,3 +15,7 @@ Usage
 Notes
 -----
 為了方便使用,地址中不會有傳統文字'臺',請先自行轉換。
+
+This project is forked from mlouielu/twaddress.
+I only added a helper function and a couple of tests.
+Also packaged so this can be installed using pip.

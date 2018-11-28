@@ -40,7 +40,7 @@ def parse(s):
     s = _normalize_address(s)
 
     # Match 巷號弄室
-    pattern = '(\d+[巷號弄室])'
+    pattern = '(\d+-?\d+[巷號弄室])'
     match = re.findall(pattern, s)
     left = re.sub(pattern, '', s)
     for i in match:

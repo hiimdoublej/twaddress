@@ -67,3 +67,12 @@ class GetTest(unittest.TestCase):
             get_result_1,
             "2F, No.7, Ln. 6, Chenggong Rd., Banqiao Dist., New Taipei City 220, Taiwan (R.O.C.)",
             msg=f"Original string={str_1}")
+
+    def test_sub_numbers(self):
+        str_1 = "新北市板橋區中山路二段330之2號11樓"
+        get_results_1 = twaddress.get(str_1)
+        self.assertEqual(
+            get_results_1,
+            "11F, No.330-2, Sec. 2, Zhongshan Rd., Banqiao Dist., New Taipei City 220, Taiwan (R.O.C.)",
+            msg=f"Original string={str_1}"
+        )

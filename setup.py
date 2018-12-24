@@ -1,7 +1,7 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+#  with open("README.md", "r") as fh:
+#      long_description = fh.read()
 
 setuptools.setup(
     name="twaddress",
@@ -9,8 +9,8 @@ setuptools.setup(
     author="mlouie",
     author_email="git@louie.lu",
     description="A package to translate Chinese address to English, using Taiwanese postal office format.",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
+    #  long_description=long_description,
+    #  long_description_content_type="text/markdown",
     url="https://github.com/mlouielu/twaddress",
     packages=setuptools.find_packages(exclude=('test',)),
     include_package_data=True,
